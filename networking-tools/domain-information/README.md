@@ -1,0 +1,6 @@
+---
+icon: globe
+---
+
+# domain information
+
