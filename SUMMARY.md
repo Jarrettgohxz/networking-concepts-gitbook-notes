@@ -65,6 +65,9 @@
   * [smbclient](networking-tools/miscellaneous/smbclient.md)
 * [proxy & tunneling](networking-tools/proxy-and-tunneling/README.md)
   * [proxychains](networking-tools/proxy-and-tunneling/proxychains.md)
+* [Programming/scripting](networking-tools/programming-scripting/README.md)
+  * [Python](networking-tools/programming-scripting/python.md)
+  * [C](networking-tools/programming-scripting/c.md)
 
 ## 🤩 Interesting concepts
 
