@@ -54,6 +54,8 @@
   * [RDP/VNC](networking-tools/services/rdp-vnc.md)
   * [ngrok](networking-tools/services/ngrok.md)
   * [networking.service](networking-tools/services/networking.service.md)
+  * [nginx](networking-tools/services/nginx.md)
+  * [apache](networking-tools/services/apache.md)
 * [miscellaneous](networking-tools/miscellaneous/README.md)
   * [cURL](networking-tools/miscellaneous/curl.md)
   * [wget](networking-tools/miscellaneous/wget.md)
