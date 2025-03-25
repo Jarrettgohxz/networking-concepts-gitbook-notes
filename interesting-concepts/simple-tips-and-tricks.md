@@ -6,7 +6,7 @@ description: >-
 
 # Simple tips & tricks
 
-While some might not be useful or applicable to all users and situations, but it can potentially provide some shortcuts.
+While some might not be useful or applicable to all users and situations, it can potentially provide some shortcuts.
 
 ### Retrieve public IP address
 

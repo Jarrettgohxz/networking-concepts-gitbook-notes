@@ -79,7 +79,7 @@ Simply connect a physical ethernet adapter from the client interface to the inte
 
 Subsequently, verify if the client interface have been successfully configured with an IP address from the DHCP range. Perform the following on the client machine; a few troubleshooting steps will be outlined too.&#x20;
 
-#### Linux
+### Linux
 
 ```bash
 # Verify the configuration (run either one of the commands) 
@@ -115,9 +115,7 @@ $ sudo ip link set eth0 up
 $ sudo systemctl restart networking.service
 ```
 
-
-
-**Windows**
+### Windows
 
 ```powershell
 PS> ipconfig /all
