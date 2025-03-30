@@ -83,3 +83,7 @@
 * [22/tcp \~ ssh](network-ports-and-services-cheat-sheet/22-tcp-ssh.md)
 * [23/tcp \~ telnet](network-ports-and-services-cheat-sheet/23-tcp-telnet.md)
 * [...](network-ports-and-services-cheat-sheet/....md)
+
+## For-fun projects
+
+* [Raspberry pi + Windows machine experiments](for-fun-projects/raspberry-pi-+-windows-machine-experiments.md)
