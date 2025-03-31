@@ -74,7 +74,13 @@ $ systemctl enable dnsmasq.service
 
 As of now, the Windows machine will have an IP address (within the configured DHCP range) assigned to its interface, but will not be able access the internet. Without further configurations, the traffic coming from the Windows machine will simply be received and dropped by the Raspberry Pi.&#x20;
 
+The following image shows the traffic through the `eth1` interface (Raspberry Pi interface that is directly connected to the Windows machine), with the filter value `ip.addr==146.190.62.39`, when visiting the address `http://146.190.62.39:80` (_http://httpforever.com_) on the browser.&#x20;
+
+The traffic displays the source address of `22.22.22.8`, which happens to be the address assigned to the interface on the Windows machine (given by the DHCP server). The destination address is `146.190.62.39` . Notice that 3 consecutive TCP SYN requests were sent to the destination, with no reply. Subsequently a series of TCP retransmissions were initiated, with no replies too.&#x20;
+
 <figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption><p>Wireshark capture from the Raspberry Pi <code>eth1</code> interface</p></figcaption></figure>
+
+This behavior happens continuously.
 
 <figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
