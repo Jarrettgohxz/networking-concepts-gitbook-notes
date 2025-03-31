@@ -2,11 +2,11 @@
 
 {% embed url="https://chatgpt.com/c/67de8640-90bc-8008-a44f-1f35445ac0df" %}
 
-The goal of this project is to allow the Windows machine (laptop) to access the capabilities of a headless raspberry pi (running Kali Linux in this example, but works for Raspberry Pi OS, Ubuntu, etc.), without  an external monitor screen.
+The goal of this project is to allow a Windows machine (laptop) to access the capabilities of a headless raspberry pi (running Kali Linux in this example, but works for Raspberry Pi OS, Ubuntu, etc.), without an external monitor screen.
 
-This can be achieved by connecting my Windows machine to the Raspberry Pi via an ethernet connection that provides internet access by routing all outbound traffic through the default interface. I will also be able to access a Linux shell from the Windows machine via a SSH connection.
+This can be achieved by connecting the Windows machine to the Raspberry Pi via an ethernet connection that provides internet access by routing all outbound traffic through the default interface. I will also be able to access a Linux shell from the Windows machine via a SSH connection.
 
-Additionally, to allow my Windows machine to access the TryhackMe ([https://help.tryhackme.com/en/articles/6611809-getting-started-with-openvpn](https://help.tryhackme.com/en/articles/6611809-getting-started-with-openvpn)) VPN servers, I will first setup an OpenVPN connection on my Raspberry pi, before performing appropriate networking configurations to route traffic to the VPN interface.&#x20;
+Additionally, to allow my Windows machine to access the TryhackMe ([https://help.tryhackme.com/en/articles/6611809-getting-started-with-openvpn](https://help.tryhackme.com/en/articles/6611809-getting-started-with-openvpn)) VPN servers, I will first setup an OpenVPN connection on my Raspberry pi, before performing appropriate networking configurations to route traffic through the VPN interface.&#x20;
 
 In other words, from the Windows machine point-of-view, the Raspberry pi will be acting as a "network gateway" to the internet, with the benefit of being able to access a Linux shell environment. This removes the need for an external monitor screen for the Raspberry Pi.
 
@@ -37,22 +37,24 @@ Configuring static IP address
 Setting up a DHCP server with dnsmasq
 {% endembed %}
 
-Assume that we want the Raspberry Pi interface `eth1` to have a static IP address value of `22.22.22.22`. The DHCP range will be `22.22.22.0` to `22.22.22.21` .
+Assume we want the Raspberry Pi interface `eth1` to have a static IP address value of `22.22.22.22`. Additionally, the DHCP server will provide the addresses from `22.22.22.0` to `22.22.22.21` .
 
 In the Raspberry Pi, add the following entries at the bottom of the `/etc/network/interfaces` and `/etc/dnsmasq.conf` files respectively:
 
-<pre class="language-bash"><code class="lang-bash"><strong>auto eth1
+<pre class="language-bash"><code class="lang-bash"><strong># ```/etc/network/interfaces
+</strong><strong>auto eth1
 </strong>iface eth1 inet static
   address 22.22.22.22
   netmask 255.255.255.0
 </code></pre>
 
-```bash
+````bash
+# ```/etc/dnsmasq.conf
 interface=eth1
 dhcp-range=22.22.22.0,22.22.22.21
-```
+````
 
-Restart the `networking.service` and `dnsmasq.conf` services:
+Restart the `networking.service` and `dnsmasq.service` services:
 
 ````bash
 # ```raspbberypi
