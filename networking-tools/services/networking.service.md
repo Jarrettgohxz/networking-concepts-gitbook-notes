@@ -1,12 +1,10 @@
----
-description: 'Configuration file: /etc/network/interfaces'
----
-
 # networking.service
+
+Configuration file: `/etc/network/interfaces`
 
 ## Configuring static ip on Debian based Linux distributions (Ubuntu, Kali, Raspberry Pi OS, etc.)
 
-1. Edit the configuration file: _**/etc/network/interfaces**_&#x20;
+1. Edit the configuration file: `/etc/network/interfaces`&#x20;
 
 #### General configuration
 
@@ -24,7 +22,7 @@ iface <iface> inet static
 
 **Example**&#x20;
 
-Configure network interface _<mark style="color:red;">**eth0**</mark>_ to have the static ip address of `192.168.1.88/24` with the default gateway address of `192.168.1.254`. and broadcast address of `192.168.1.255` with the following parameters. Optionally, the DNS nameservers can be set too (1.1.1.1 in this case).
+Configure network interface _<mark style="color:red;">**eth0**</mark>_ to have the static IP address of `192.168.1.88/24` with the default gateway address of `192.168.1.254`, and broadcast address of `192.168.1.255`. Optionally, the DNS nameservers can be set too (`1.1.1.1` in this case).
 
 <pre class="language-shell"><code class="lang-shell"><strong>auto eth0
 </strong>iface eth0 inet static
@@ -37,7 +35,7 @@ Configure network interface _<mark style="color:red;">**eth0**</mark>_ to have t
 
 </code></pre>
 
-2. Restart the networking.service daemon
+2. Restart the `networking.service` daemon
 
 ```bash
 $ sudo systemctl restart networking.service
@@ -57,13 +55,13 @@ $ ip a show eth0
 
 If the interface fails to display the new configurations, try the following:
 
-1. Physically unplugging and plugging in the network adapter
+1. Physically unlplug and plug back in the network adapter
 
 a) Take note of the bright green/orange flashing light on the hardware. The connection is working if it's present.
 
 
 
-2. Manually restarting the interface using the _**ip**_ or _**ifconfig**_ tool
+2. Manually restart the interface using the _**ip**_ or _**ifconfig**_ tool
 
 a) Bring the interface down and up again
 
