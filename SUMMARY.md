@@ -45,6 +45,7 @@
 * [capture & analysis](networking-tools/capture-and-analysis/README.md)
   * [tcpdump](networking-tools/capture-and-analysis/tcpdump.md)
   * [ngrep](networking-tools/capture-and-analysis/ngrep.md)
+  * [wireshark](networking-tools/capture-and-analysis/wireshark.md)
 * [firewall & security](networking-tools/firewall-and-security/README.md)
   * [iptables](networking-tools/firewall-and-security/iptables.md)
   * [nft](networking-tools/firewall-and-security/nft.md)

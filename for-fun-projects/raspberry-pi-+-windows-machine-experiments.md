@@ -39,7 +39,7 @@ Setting up a DHCP server with dnsmasq
 
 Assume that we want the Raspberry Pi interface `eth1` to have a static IP address value of `22.22.22.22`. The DHCP range will be `22.22.22.0` to `22.22.22.21` .
 
-Add the following entries at the bottom of the `/etc/network/interfaces`  and `/etc/dnsmasq.conf` files respectively:
+Add the following entries at the bottom of the `/etc/network/interfaces` and `/etc/dnsmasq.conf` files respectively:
 
 ```bash
 auto eth1
@@ -60,15 +60,7 @@ $ systemctl restart networking.service
 $ systemctl restart dnsmasq.service
 ```
 
-```powershell
-...
-   Connection-specific DNS Suffix  . :
-   IPv4 Address. . . . . . . . . . . : 22.22.22.x
-   Subnet Mask . . . . . . . . . . . : 255.255.255.0
-   Default Gateway . . . . . . . . . : 22.22.22.22
-```
-
-#### Persist the configurations
+**Persist the configurations**
 
 ```bash
 $ systemctl enable networking.service
@@ -77,27 +69,79 @@ $ systemctl enable dnsmasq.service
 
 -> the command above ensures that both services will be enabled on reboot.
 
+**Test the configurations**
+
+As of now, the Windows machine will have an IP address (within the configured DHCP range) assigned to its interface, but will not be able access the internet. Without further configurations, the traffic coming from the Windows machine will simply be received and dropped by the Raspberry Pi.&#x20;
 
 
-2. **Enable IPV4 forwarding and iptables masquerading**
+
+2. **Enable IPV4 forwarding and `iptables` masquerading**
 
 -> consequently, all traffic destined for the internet (from the Windows machine) will route through the Raspberry pi
 
--> try disabling IPV4 forwarding (`sysctl -w net.ipv4_ip_forward=1`), or removing the IP masquerading rule, and observe the changes (internet connection for the Windows machine should not work anymore)
+```bash
+$ sysctl -w net.ipv4.ip_forward = 1
+```
 
-#### Persist the configurations
+The first command enables the routing of traffic for the default interface (`eth0`) that are bound for the internet. While the second command works the same way for the VPN interface (`tun0`).
 
--> Add the line `net.ipv4.ip_forward = 1` in `/etc/sysctl.conf` for persistence
+```bash
+$ iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+$ iptables -t nat -A POSTROUTING -o tun0 -j MASQUERADE
+```
 
+**To better understand the configurations**
 
+Perform the following actions, and observe the changes (internet connection for the Windows machine should not work anymore):
 
-persistence for iptables rule: [https://jarrettgxz-sec.gitbook.io/networking-concepts/networking-tools/firewall-and-security/iptables](https://jarrettgxz-sec.gitbook.io/networking-concepts/networking-tools/firewall-and-security/iptables)
+a) Try disabling IPV4 forwarding
+
+```bash
+$ sysctl -w net.ipv4.ip_forward = 0
+```
+
+B) Try removing the IP masquerading rule
+
+```bash
+$ iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
+```
+
+**Persist the configurations**
+
+a) Persist the IPV4 forward rules
+
+* Add the line `net.ipv4.ip_forward = 1` in `/etc/sysctl.conf` for persistence
+
+b) Persist the iptables rules
+
+&#x20;[https://jarrettgxz-sec.gitbook.io/networking-concepts/networking-tools/firewall-and-security/iptables](https://jarrettgxz-sec.gitbook.io/networking-concepts/networking-tools/firewall-and-security/iptables)
+
+**Test the configurations**
+
+a) Try connecting to a random website from the Windows machine. The connection should succeed, similar to when the machine is directly connected to the router.
+
+b) Try connecting to the TryHackMe's VPN server
+
+_Raspberry Pi_&#x20;
+
+```bash
+$ openvpn [vpn_file].ovpn
+```
+
+_Windows machine_
+
+The following command should return the local IP address of our machine within the VPN server (`10.x.x.x`)
+
+```bash
+$ curl 10.10.10.10/whoami # test connection
+```
 
 
 
 3. **Open a SSH session on the Raspberry pi from the Windows machine**
 
-
-
-
+```bash
+$ ssh [username]@22.22.22.22
+...
+```
 
