@@ -49,22 +49,20 @@ $ ip address show dev eth0
 $ ip a show eth0
 ```
 
-
-
 #### Troubleshooting
 
 If the interface fails to display the new configurations, try the following:
 
-1. Physically unlplug and plug back in the network adapter
+1. Physically unlplug and plug the network adapter back in
 
-a) Take note of the bright green/orange flashing light on the hardware. The connection is working if it's present.
+* Take note of the bright green/orange flashing light on the hardware
+* The connection is working if it's present.
 
 
 
-2. Manually restart the interface using the _**ip**_ or _**ifconfig**_ tool
+2. Manually restart the interface using the `ip` or `ifconfig` tool
 
-a) Bring the interface down and up again
-
+* Bring the interface down and up again
 * The bright green/orange flashing lights should be turned off when the interface is brought down, and will come back up again when the interface is brought up
 
 ```bash
