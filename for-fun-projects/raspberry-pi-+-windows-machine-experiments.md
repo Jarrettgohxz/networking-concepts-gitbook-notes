@@ -93,7 +93,7 @@ Enable IPV4 forwarding on the Raspberry pi:
 $ sysctl -w net.ipv4.ip_forward = 1
 ````
 
-The first command enables the routing of traffic bound for the internet — from the Windows machine interface (`eth1`), to the default interface (`eth0`). While the second command works the same way for the VPN interface (`tun0`).
+Looking at the two commands listed below, the first enables the routing of traffic bound for the internet: from the Windows machine interface (`eth1`), to the default interface (`eth0`). The second commands works the same way, but routes traffic through the VPN interface (`tun0`) instead.
 
 ````bash
 # ```raspbberypi
