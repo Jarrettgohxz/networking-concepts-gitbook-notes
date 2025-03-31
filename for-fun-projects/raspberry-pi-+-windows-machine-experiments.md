@@ -2,7 +2,7 @@
 
 {% embed url="https://chatgpt.com/c/67de8640-90bc-8008-a44f-1f35445ac0df" %}
 
-The goal of this project is to allow the Windows machine (laptop) to access the capabilities of a headless raspberry pi (running Kali Linux in this example, but works for Raspberry Pi OS, Ubuntu, etc.).
+The goal of this project is to allow the Windows machine (laptop) to access the capabilities of a headless raspberry pi (running Kali Linux in this example, but works for Raspberry Pi OS, Ubuntu, etc.), without  an external monitor screen.
 
 This can be achieved by connecting my Windows machine to the Raspberry Pi via an ethernet connection that provides internet access by routing all outbound traffic through the default interface. I will also be able to access a Linux shell from the Windows machine via a SSH connection.
 
@@ -39,14 +39,13 @@ Setting up a DHCP server with dnsmasq
 
 Assume that we want the Raspberry Pi interface `eth1` to have a static IP address value of `22.22.22.22`. The DHCP range will be `22.22.22.0` to `22.22.22.21` .
 
-Add the following entries at the bottom of the `/etc/network/interfaces` and `/etc/dnsmasq.conf` files respectively:
+In the Raspberry Pi, add the following entries at the bottom of the `/etc/network/interfaces` and `/etc/dnsmasq.conf` files respectively:
 
-```bash
-auto eth1
-iface eth1 inet static
+<pre class="language-bash"><code class="lang-bash"><strong>auto eth1
+</strong>iface eth1 inet static
   address 22.22.22.22
   netmask 255.255.255.0
-```
+</code></pre>
 
 ```bash
 interface=eth1
@@ -55,17 +54,19 @@ dhcp-range=22.22.22.0,22.22.22.21
 
 Restart the `networking.service` and `dnsmasq.conf` services:
 
-```bash
+````bash
+# ```raspbberypi
 $ systemctl restart networking.service
 $ systemctl restart dnsmasq.service
-```
+````
 
 **Persist the configurations**
 
-```bash
+````bash
+# ```raspbberypi
 $ systemctl enable networking.service
 $ systemctl enable dnsmasq.service
-```
+````
 
 -> the command above ensures that both services will be enabled on reboot.
 
@@ -77,18 +78,22 @@ As of now, the Windows machine will have an IP address (within the configured DH
 
 2. **Enable IPV4 forwarding and `iptables` masquerading**
 
--> consequently, all traffic destined for the internet (from the Windows machine) will route through the Raspberry pi
+Enable IPV4 forwarding on the Raspberry pi:
 
-```bash
+````bash
+# ```raspbberypi
 $ sysctl -w net.ipv4.ip_forward = 1
-```
+````
 
-The first command enables the routing of traffic for the default interface (`eth0`) that are bound for the internet. While the second command works the same way for the VPN interface (`tun0`).
+The first command enables the routing of traffic bound for the internet — from the Windows machine interface (`eth1`), to the default interface (`eth0`). While the second command works the same way for the VPN interface (`tun0`).
 
-```bash
+````bash
+# ```raspbberypi
 $ iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 $ iptables -t nat -A POSTROUTING -o tun0 -j MASQUERADE
-```
+````
+
+-> consequently, all traffic destined for the internet (from the Windows machine) will route through the Raspberry pi
 
 **To better understand the configurations**
 
@@ -140,8 +145,16 @@ $ curl 10.10.10.10/whoami # test connection
 
 3. **Open a SSH session on the Raspberry pi from the Windows machine**
 
-```bash
+Enable the SSH service on the Raspberry Pi:
+
+````bash
+# ```raspberrypi
+$ systemctl start ssh.service
+````
+
+````bash
+# ```windows-machine
 $ ssh [username]@22.22.22.22
 ...
-```
+````
 
