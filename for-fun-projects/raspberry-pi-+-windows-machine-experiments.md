@@ -74,7 +74,7 @@ $ systemctl enable dnsmasq.service
 
 As of now, the Windows machine will have an IP address (within the configured DHCP range) assigned to its interface, but will not be able access the internet. Without further configurations, the traffic coming from the Windows machine will simply be received and dropped by the Raspberry Pi.&#x20;
 
-
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Wireshark capture from the Raspberry Pi eth1 interface</p></figcaption></figure>
 
 2. **Enable IPV4 forwarding and `iptables` masquerading**
 
