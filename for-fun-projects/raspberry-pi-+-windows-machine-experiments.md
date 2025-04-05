@@ -151,6 +151,8 @@ The following command should return the local IP address of our machine within t
 $ curl 10.10.10.10/whoami # test connection
 ```
 
+A script can be utilized to enable the `openvpn` connection on the Raspberry pi on startup, by creating a  `systemd` service. Refer to the following documentation for more information: [https://jarrettgxz-sec.gitbook.io/linux/systemd](https://jarrettgxz-sec.gitbook.io/linux/systemd).
+
 
 
 3. **Open a SSH session on the Raspberry pi from the Windows machine**
