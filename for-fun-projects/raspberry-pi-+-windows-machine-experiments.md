@@ -170,3 +170,26 @@ $ ssh [username]@22.22.22.22
 ...
 ````
 
+
+
+### Additional setup steps
+
+1. Setup the Linux machine as the DNS server for the Windows machine
+
+````powershell
+```windows
+> netsh interface ipv4 set dns name=[interface_name] static [linux_ip_addr]
+> netsh interface ipv4 show dnsservers
+````
+
+````bash
+```linux
+$ systemctl restart dnsmasq.conf
+````
+
+The records defined in `/etc/hosts` should be resolvable from the Windows machine.
+
+````powershell
+```windows
+> nslookup [addr] [linux_dns_server_addr]
+````
