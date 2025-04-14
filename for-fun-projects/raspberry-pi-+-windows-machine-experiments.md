@@ -193,3 +193,8 @@ The records defined in `/etc/hosts` should be resolvable from the Windows machin
 ```windows
 > nslookup [addr] [linux_dns_server_addr]
 ````
+
+### Important troubleshooting steps
+
+1. Ensure Windows machine is not connected to any VPN or external network services.
+2. ...
