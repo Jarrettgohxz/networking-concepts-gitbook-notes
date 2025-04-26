@@ -184,7 +184,7 @@ $ ssh [username]@22.22.22.22
 
 ````bash
 ```linux
-$ systemctl restart dnsmasq.conf
+$ systemctl restart dnsmasq.service
 ````
 
 The records defined in `/etc/hosts` should be resolvable from the Windows machine.
