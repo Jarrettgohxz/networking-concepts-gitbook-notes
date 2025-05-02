@@ -193,8 +193,8 @@ $ systemctl restart dnsmasq.service
 > Note: The first command shown below requires administrative privileges
 
 ````powershell
-```windows
-> netsh interface ipv4 set dns name="interface_name" static [linux_machine_addr]
+```windows (admin privileges)
+system32> netsh interface ipv4 set dns name="interface_name" static [linux_machine_addr]
 
 # eg.
 > ipconfig /all
@@ -238,8 +238,8 @@ Addresses: 88.88.88.88
 4. To remove the static DNS server entry on the Windows machine
 
 ````powershell
-```windows (from admin shell)
-> netsh interface ip set dns name="interface_name" source=dhcp
+```windows (admin privileges)
+system32> netsh interface ip set dns name="interface_name" source=dhcp
 
 # eg.
 > netsh interface ip set dns name="Ethernet 8" source=dhcp
