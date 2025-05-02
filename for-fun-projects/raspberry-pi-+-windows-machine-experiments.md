@@ -174,27 +174,77 @@ $ ssh [username]@22.22.22.22
 
 ### Additional setup steps
 
-1. Setup the Linux machine as the DNS server for the Windows machine
-
-````powershell
-```windows
-> netsh interface ipv4 set dns name=[interface_name] static [linux_ip_addr]
-> netsh interface ipv4 show dnsservers
-````
+1. Configure hostname resolution entries on the Linux machine via the `/etc/hosts` file
 
 ````bash
 ```linux
+$ vim /etc/hosts
+...
+example.eg 88.88.88.88
+...
+
 $ systemctl restart dnsmasq.service
 ````
 
-The records defined in `/etc/hosts` should be resolvable from the Windows machine.
+
+
+2. Configure the IP address of the Linux machine as a static DNS server entry on the Windows machine
+
+> Note: The first command shown below requires administrative privileges
 
 ````powershell
 ```windows
-> nslookup [addr] [linux_dns_server_addr]
+> netsh interface ipv4 set dns name="interface_name" static [linux_machine_addr]
+
+# eg.
+> ipconfig /all
+Configuration for interface "Ethernet 8"
+    DHCP enabled:                         Yes
+    IP Address:                           ...
+    ...                                   ...
+    
+> netsh interface ipv4 set dns name="Ethernet 8" static [linux_machine_addr]
+````
+
+View the current DNS server configurations
+
+````powershell
+```windows
+> netsh interface ipv4 show dnsservers
+> netsh interface ip show config
+````
+
+
+
+3. The records defined in `/etc/hosts` (on the Linux machine) should be resolvable from the Windows machine.
+
+````powershell
+```windows
+> nslookup [addr] [linux_machine_addr]
+
+# eg. from the /etc/hosts entry defined in (1) above
+> nslookup example.eg [linux_machine_addr]
+Server:  ...
+Address:  [linux_machine_addr]
+
+Non-authoritative answer:
+Name:    example.eg
+Addresses: 88.88.88.88
+
+````
+
+
+
+4. To remove the static DNS server entry on the Windows machine
+
+````powershell
+```windows (from admin shell)
+> netsh interface ip set dns name="interface_name" source=dhcp
+
+# eg.
+> netsh interface ip set dns name="Ethernet 8" source=dhcp
 ````
 
 ### Important troubleshooting steps
 
 1. Ensure Windows machine is not connected to any VPN or external network services.
-2. ...
