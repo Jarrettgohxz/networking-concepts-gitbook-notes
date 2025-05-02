@@ -180,7 +180,7 @@ $ ssh [username]@22.22.22.22
 ```linux
 $ vim /etc/hosts
 ...
-example.eg 88.88.88.88
+88.88.88.88 example.eg
 ...
 
 $ systemctl restart dnsmasq.service
@@ -198,10 +198,15 @@ system32> netsh interface ipv4 set dns name="interface_name" static [linux_machi
 
 # eg.
 > ipconfig /all
+
+...
+
 Configuration for interface "Ethernet 8"
     DHCP enabled:                         Yes
     IP Address:                           ...
     ...                                   ...
+    
+...
     
 > netsh interface ipv4 set dns name="Ethernet 8" static [linux_machine_addr]
 ````
@@ -220,7 +225,7 @@ View the current DNS server configurations
 
 ````powershell
 ```windows
-> nslookup [addr] [linux_machine_addr]
+> nslookup [hostname] [linux_machine_addr]
 
 # eg. from the /etc/hosts entry defined in (1) above
 > nslookup example.eg [linux_machine_addr]
