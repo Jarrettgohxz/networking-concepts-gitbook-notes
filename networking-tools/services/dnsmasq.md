@@ -77,7 +77,7 @@ $ sudo systemctl status dnsmasq.service
 
 Simply connect a physical ethernet adapter from the client interface to the interface on the DHCP server machine that was configured.&#x20;
 
-Subsequently, verify if the client interface have been successfully configured with an IP address from the DHCP range. Perform the following on the client machine; a few troubleshooting steps will be outlined too.&#x20;
+Subsequently, verify if the client interface have been successfully configured with an IP address from the DHCP range. Perform the following on the client machine — a few troubleshooting steps will be outlined too.&#x20;
 
 ### Linux
 
@@ -102,14 +102,26 @@ The IP address displayed after **inet** should be within the DHCP pool range def
 
 The following actions can be taken to resolve any issues:
 
-1. Reset the client interface
+1. Reset the lease and request for a new IP address via a DHCP query:
+
+```bash
+# Send a DHCP request
+$ dhclient -r [iface]
+$ dhclient [iface]
+
+# eg. on interface eth0
+$ dhclient -r eth0
+$ dhclient eth0
+```
+
+2. Reset the client network interface
 
 ```bash
 $ sudo ip link set eth0 down
 $ sudo ip link set eth0 up
 ```
 
-2. Restart the networking.service daemon
+3. Restart the networking.service daemon
 
 ```bash
 $ sudo systemctl restart networking.service
@@ -144,9 +156,13 @@ The IPV4 address value displayed should be within the range of the DHCP pool ran
 
 #### <mark style="color:orange;">Troubleshooting on Windows</mark>
 
-The following actions can be taken trigger a DHCP query:
+Reset the lease and request for a new IP address via a DHCP query:
 
 ```powershell
-PS> ipconfig /release
-PS> ipconfig /renew
+PS> ipconfig /release [iface]
+PS> ipconfig /renew [iface]
+
+# eg. on interface "Ethernet"
+PS> ipconfig /release "Ethernet"
+PS> ipconfig /renew "Ethernet"
 ```

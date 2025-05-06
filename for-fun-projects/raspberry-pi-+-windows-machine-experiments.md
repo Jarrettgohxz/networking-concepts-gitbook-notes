@@ -1,7 +1,5 @@
 # Raspberry pi + Windows machine experiments
 
-{% embed url="https://chatgpt.com/c/67de8640-90bc-8008-a44f-1f35445ac0df" %}
-
 The goal of this project is to allow a Windows machine (laptop) to access the capabilities of a headless raspberry pi (running Kali Linux in this example, but works for Raspberry Pi OS, Ubuntu, etc.), without an external monitor screen.
 
 This can be achieved by connecting the Windows machine to the Raspberry Pi via an ethernet connection that provides internet access by routing all outbound traffic through the default interface. I will also be able to access a Linux shell from the Windows machine via a SSH connection.
@@ -17,6 +15,8 @@ In other words, from the Windows machine point-of-view, the Raspberry pi will be
 * Default ethernet interface (`eth0`): connected directly to the router via the LAN port
 * USB-A port (`eth1`): connected directly to the Windows machine (USB-A to ethernet)
 
+
+
 2. <mark style="color:blue;">Windows machine</mark>
 
 * USB-C port: connected directly to the Raspberry Pi (USB-C to ethernet)
@@ -29,7 +29,7 @@ Take note of the interface names (`eth0` and `eth1`) for each connection.
 
 Note: The command given in this example (to configure a static IP address) only works for a Debian-based machine.
 
-{% embed url="https://jarrettgxz-sec.gitbook.io/networking-concepts/networking-tools/services/networking.service)" %}
+{% embed url="https://jarrettgxz-sec.gitbook.io/networking-concepts/networking-tools/services/networking.service" %}
 Configuring static IP address
 {% endembed %}
 
@@ -105,6 +105,17 @@ $ iptables -t nat -A POSTROUTING -o tun0 -j MASQUERADE
 
 -> consequently, all traffic destined for the internet (from the Windows machine) will route through the Raspberry pi
 
+At this point, the interface on the Windows machine should be automatically configured with an IP address from the DHCP server. However if it does not work for any reasons, an explicit DHCP query can be triggered with the following commands:
+
+````powershell
+# ```windows
+# given that there is only a single network interface
+PS> ipconfig /release
+PS> ipconfnig /renew
+````
+
+
+
 **To better understand the configurations**
 
 Perform the following actions, and observe the changes (internet connection for the Windows machine should not work anymore):
@@ -129,7 +140,7 @@ a) Persist the IPV4 forward rules
 
 b) Persist the iptables rules
 
-&#x20;[https://jarrettgxz-sec.gitbook.io/networking-concepts/networking-tools/firewall-and-security/iptables](https://jarrettgxz-sec.gitbook.io/networking-concepts/networking-tools/firewall-and-security/iptables)
+{% embed url="https://jarrettgxz-sec.gitbook.io/networking-concepts/networking-tools/firewall-and-security/iptables" %}
 
 **Test the configurations**
 
@@ -151,7 +162,9 @@ The following command should return the local IP address of our machine within t
 $ curl 10.10.10.10/whoami # test connection
 ```
 
-A script can be utilized to enable the `openvpn` connection on the Raspberry pi on startup, by creating a  `systemd` service. Refer to the following documentation for more information: [https://jarrettgxz-sec.gitbook.io/linux/system/systemd](https://jarrettgxz-sec.gitbook.io/linux/system/systemd).
+A script can be utilized to enable the `openvpn` connection on the Raspberry pi on startup, by creating a  `systemd` service. Refer to the following documentation for more information:&#x20;
+
+{% embed url="https://jarrettgxz-sec.gitbook.io/linux/system/systemd" %}
 
 
 
@@ -252,4 +265,4 @@ system32> netsh interface ip set dns name="interface_name" source=dhcp
 
 ### Important troubleshooting steps
 
-1. Ensure Windows machine is not connected to any VPN or external network services.
+1. Ensure Windows machine is not connected to any VPN or external network services
