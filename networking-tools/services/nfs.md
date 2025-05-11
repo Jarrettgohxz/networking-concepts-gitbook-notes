@@ -18,13 +18,13 @@ PORT     STATE SERVICE VERSION
 2049/tcp open  nfs     ...
 
 # optional: using NSE script
-$ nmap --script=nfs-showmount -p 111 "$TARGET"
+$ nmap --script=nfs-showmount -p 111 [remote_ip]
 ...
 ```
 
 2. `showmount`
 
-* This command allows us to view the mountable share points on the remote server
+* View the mountable share points on the remote server
 
 ```bash
 # show all the mountable share points
