@@ -4,9 +4,9 @@ Network File System (NFS) is a networking protocol for distributed file sharing.
 
 ### Basic commands
 
-**Discover mountable remote shares**
+**Enumerate**&#x20;
 
-1. nmap
+1. `nmap`
 
 ```bash
 # port 111 - rpcbind
@@ -22,7 +22,7 @@ $ nmap --script=nfs-showmount -p 111 "$TARGET"
 ...
 ```
 
-2. showmount
+2. `showmount`
 
 * This command allows us to view the mountable share points on the remote server
 
@@ -30,7 +30,7 @@ $ nmap --script=nfs-showmount -p 111 "$TARGET"
 # show all the mountable share points
 $ showmount -e [remote_ip]
 Export list for [remote_ip]:
-[server_mount_location] [whitelisted_ip_addr]
+[server_share_location] [whitelisted_ip_addr]
 
 # eg. client ip addr 10.10.10.10 whitelisted to mount the share /volume/test 
 # from remote address 8.8.8.8
@@ -42,11 +42,11 @@ Export list for 8.8.8.8:
 
 **Mount the remote shares**
 
-<pre class="language-bash"><code class="lang-bash"><strong>$ mount -t nfs [nfs_server_ip_add]:[server_mount_location] [local_mount_point]
+<pre class="language-bash"><code class="lang-bash"><strong>$ mount -t nfs [nfs_server_ip_add]:[server_share_location] [local_mount_point]
 </strong>
-# Eg. mount the /volume/test share onto the local directory /mnt/testa
+# Eg. mount the /volume/test (on 8.8.8.8)  share onto the local directory /mnt/test
 $ mkdir /mnt/test # create the dir to mount the filesystem
-$ mount -t nfs x.x.x.x:/volume/test /mnt/test
+$ mount -t nfs 8.8.8.8:/volume/test /mnt/test
 </code></pre>
 
 ### Important notes
