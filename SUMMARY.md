@@ -57,6 +57,7 @@
   * [networking.service](networking-tools/services/networking.service.md)
   * [nginx](networking-tools/services/nginx.md)
   * [apache](networking-tools/services/apache.md)
+  * [nfs](networking-tools/services/nfs.md)
 * [miscellaneous](networking-tools/miscellaneous/README.md)
   * [cURL](networking-tools/miscellaneous/curl.md)
   * [wget](networking-tools/miscellaneous/wget.md)
