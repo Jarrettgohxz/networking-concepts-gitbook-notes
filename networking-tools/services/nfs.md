@@ -51,5 +51,9 @@ $ mount -t nfs 8.8.8.8:/volume/test /mnt/test
 
 ### Important notes
 
-1. Modifying the file permissions for a mounted folder (using `chmod`, etc.) locally may potentially affect the permission settings on the NFS server. Specifically, if a NFS client has sufficient privileges and the server permits it, file permission changes made to a shared mount locally will be reflected on the NFS server.
+1. Modifying the file permissions for a mounted folder locally may potentially affect the permission settings on the remote NFS server
+
+* Specifically, if a NFS client has sufficient privileges and the server permits it, file permission changes made to a shared mount locally (using `chmod`, etc.)  will be reflected on the NFS server. This may cause unexpected changes to the permissions of a particular shared folder
+
+
 
