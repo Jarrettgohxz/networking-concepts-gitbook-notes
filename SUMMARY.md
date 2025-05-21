@@ -11,9 +11,10 @@
 
 * [Introduction](ssh/introduction.md)
 * [Basics](ssh/basics.md)
-* [Direct SSH tunnel](ssh/direct-ssh-tunnel.md)
-* [Reverse SSH tunnel](ssh/reverse-ssh-tunnel.md)
-* [Dynamic SSH tunnel](ssh/dynamic-ssh-tunnel.md)
+* [SSH tunneling](ssh/ssh-tunneling/README.md)
+  * [Direct SSH tunnel](ssh/ssh-tunneling/direct-ssh-tunnel.md)
+  * [Reverse SSH tunnel](ssh/ssh-tunneling/reverse-ssh-tunnel.md)
+  * [Dynamic SSH tunnel](ssh/ssh-tunneling/dynamic-ssh-tunnel.md)
 * [SSH public key authentication](ssh/ssh-public-key-authentication.md)
 * [Port forwarding with virtual interface](ssh/port-forwarding-with-virtual-interface.md)
 * [sshd](ssh/sshd.md)

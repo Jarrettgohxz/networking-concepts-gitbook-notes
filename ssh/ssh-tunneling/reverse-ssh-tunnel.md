@@ -6,9 +6,11 @@ description: >-
 
 # Reverse SSH tunnel
 
-<mark style="color:orange;">Note</mark>: The terms "reverse tunnel" and "remote port forwarding" will be used interchangeably.&#x20;
+> A reverse SSH tunnel, also known as remote port forwarding, allows the creation of a tunnel that redirects traffic from a remote server and port, to a specified port on the local machine, via an SSH connection.
 
-The SSH reverse tunnel allows a port on the remote SSH server to be forwarded to a local client port. The basic syntax is as follows:
+<mark style="color:orange;">Note</mark>: The terms _reverse tunnel_ and _remote port forwarding_ will be used interchangeably.&#x20;
+
+Reverse tunneling is enabled with the `-R` flag, with the supplied values: `[remote_address:]remote_port:local_address:local_port`
 
 ```bash
 $ ssh -R [remote_address]:<remote_port>:<local_address>:<local_port>

@@ -68,6 +68,24 @@ $ curl -H <headers> -F/--form <form_data> <HTTP_URL>
 $ curl -H <headers> -F "fileToUpload=@example.php;type=text/x-php" -F "submit=Upload" 
 ```
 
+
+
+### SOCKS5 proxy
+
+```bash
+$ curl --socks5 [addr]:[port] [url]
+$ curl -x socks5://[addr]:[port] [url]
+
+# eg. Connect to https://example.com while proxying traffic through 
+# SOCKS5 proxy at 10.10.10.10 port 8888
+$ curl --socks5 10.10.10.10:8888 https://example.com
+$ curl -x socks5://10.10.10.10:8888 https://example.com
+```
+
+
+
+
+
 {% embed url="https://curl.se/" %}
 curl documentation
 {% endembed %}
