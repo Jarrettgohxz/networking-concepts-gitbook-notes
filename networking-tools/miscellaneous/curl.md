@@ -82,9 +82,7 @@ $ curl --socks5 10.10.10.10:8888 https://example.com
 $ curl -x socks5://10.10.10.10:8888 https://example.com
 ```
 
-
-
-To make the proxy handle DNS resolutions, for privacy concerns, etc.
+To make the proxy handle DNS resolutions, for privacy concerns, etc. This means that there will be no local address resolution.
 
 The `--socks5-hostname` or `-x socks5h://` options can be used instead.
 

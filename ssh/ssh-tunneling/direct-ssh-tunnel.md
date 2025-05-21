@@ -8,7 +8,7 @@ Direct tunneling is enabled with the `-L` flag, with the supplied values: `[loca
 $ ssh user@server -L [local_address:]local_port:destination_address:destination_port
 ```
 
-Eg. Direct tunneling from localhost at port 8000 to the localhost on the remote server side at port 8888.
+Eg. Direct tunneling from the local machine's localhost at port 8000 to the localhost on the remote server side at port 8888.
 
 ```bash
 $ ssh user@13.10.10.10 -L 127.0.0.1:8000:127.0.0.1:8888

@@ -15,6 +15,9 @@ Eg. Suppose we have a remote server at the address **10.10.10.10** (running SSH 
 ```bash
 $ ssh user@10.10.10.10 -D 127.0.0.1:8888
 
+# Test the configurations
+# The source address as seen from the destination address server will be that of 
+# the proxy server
 $ curl [destination_addr] --socks5 127.0.0.1:8888
 $ curl [destination_addr] -x socks5://127.0.0.1:8888
 ```
