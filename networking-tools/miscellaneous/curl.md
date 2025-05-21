@@ -84,7 +84,18 @@ $ curl -x socks5://10.10.10.10:8888 https://example.com
 
 
 
+To make the proxy handle DNS resolutions, for privacy concerns, etc.
 
+The `--socks5-hostname` or `-x socks5h://` options can be used instead.
+
+```bash
+$ curl --socks5-hostname [addr]:[port] [url]
+$ curl -x socks5h://[addr]:[port] [url]
+```
+
+
+
+{% embed url="https://everything.curl.dev/" %}
 
 {% embed url="https://curl.se/" %}
 curl documentation
