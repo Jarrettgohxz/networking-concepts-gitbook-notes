@@ -7,8 +7,6 @@ description: >-
 
 # cURL
 
-The most used protocol I had work with when using cURL are the common HTTP/HTTPS methods: `GET`, `POST`, `DELETE`, etc.&#x20;
-
 ### Basic commands:
 
 ```bash
@@ -37,19 +35,34 @@ $ curl https://domain.com?key=value
 
 ### POST&#x20;
 
-#### Text data
+#### x-www-form-urlencoded
 
 ```bash
 # no need to specify -X POST
-$ curl -H <headers> -d/--data <POST_data> <HTTP_URL> 
+$ curl -H "content-type:application/x-www-form-urlencoded" -d/--data <POST_data> <HTTP_URL> 
 ```
 
-Eg. Sending a POST request to `https://domain.com` with some data. Specify the `content-type` header with: `-H "content-type:application/x-www-form-urlencoded"`
+Eg. Sending a POST request to `https://domain.com` with some **x-www-form-urlencoded** data.&#x20;
 
 ```bash
 $ curl https://domain.com -H ... -d "key1=value1&key2=value2"
 # OR
 $ curl https://domain.com -H ... --data "key1=value1&key2=value2"
+```
+
+#### json
+
+```bash
+# no need to specify -X POST
+$ curl -H 'application/json' -d/--data <POST_data> <HTTP_URL> 
+```
+
+Eg. Sending a POST request to `https://domain.com` with some **json** data.&#x20;
+
+```bash
+$ curl https://domain.com -H ... -d '{"key1":"value1","key2":"value2"}'
+# OR
+$ curl https://domain.com -H ... --data '{"key1":"value1","key2":"value2"}'
 ```
 
 #### Form-data
@@ -67,8 +80,6 @@ $ curl -H <headers> -F/--form <form_data> <HTTP_URL>
 # Eg.
 $ curl -H <headers> -F "fileToUpload=@example.php;type=text/x-php" -F "submit=Upload" 
 ```
-
-
 
 ### SOCKS5 proxy
 
