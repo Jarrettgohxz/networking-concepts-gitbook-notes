@@ -56,6 +56,7 @@
   * [RDP/VNC](networking-tools/services/rdp-vnc.md)
   * [ngrok](networking-tools/services/ngrok.md)
   * [networking.service](networking-tools/services/networking.service.md)
+  * [NetworkManager.service](networking-tools/services/networkmanager.service.md)
   * [nginx](networking-tools/services/nginx.md)
   * [apache](networking-tools/services/apache.md)
   * [nfs](networking-tools/services/nfs.md)

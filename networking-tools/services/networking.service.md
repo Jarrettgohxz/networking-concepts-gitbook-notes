@@ -1,6 +1,10 @@
 # networking.service
 
-Configuration file: `/etc/network/interfaces`
+> The legacy Debian-style network management service, that is tied to the `ifupdown` system.
+
+Configuration file: `/etc/network/interfaces`&#x20;
+
+Refer to _**NetworkManager.service**_ for  the more modern network manager.
 
 ## Configuring static ip on Debian based Linux distributions (Ubuntu, Kali, Raspberry Pi OS, etc.)
 
