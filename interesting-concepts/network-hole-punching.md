@@ -10,7 +10,7 @@ In this experiment, we will be testing a configuration that may potentially forc
 
 This form of exploitation is known as a "NAT injection" attack, which usually involve a weak UPnP implementation: [https://www.akamai.com/site/en/documents/research-paper/upnproxy-blackhat-proxies-via-nat-injections-white-paper.pdf](https://www.akamai.com/site/en/documents/research-paper/upnproxy-blackhat-proxies-via-nat-injections-white-paper.pdf).
 
-Suppose the following situation where an attack is connected to a public wifi (eg. hotel, cafe, etc.), and notices that the admin web interface on the router is exposed with a weak default credential. To avoid suspicion, the attacker can perform a series of steps, and if the router is misconfigured with weak validation, may trick the router in exposing its web interface on the LAN side on a port on its public WAN address. Essentially, allowing the attacker to remotely access and potentially exploit the web interface.
+Suppose the following situation where an attack is connected to a public wifi (eg. hotel, cafe, etc.), and notices that the admin web interface on the router is exposed with a weak default credential. To avoid suspicion, the attacker can perform a series of steps to attempt to forward the web interface port on the public address of the router (instead of directly accessing from within the LAN). If the router is misconfigured with weak validation, the attacker will be able to remotely access and potentially exploit the web interface.
 
 ### Technical details
 
