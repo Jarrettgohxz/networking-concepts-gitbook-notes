@@ -6,29 +6,41 @@ The standard method for network hole punching involves a relay server that bridg
 
 ### Experiment
 
-In this experiement, I will be testing a different configuration that potentially forces a remote port forwarding from a remote address to a LAN address, even behind a mobile provider that doesn't explicitly allow port mappings.
+In this experiment, we will be testing a configuration that may potentially force a port forwarding to a LAN device (that we do not control) from a port on the public address. This may even behind a mobile provider that doesn't explicitly allow port mappings.
 
 The following devices will be involved:
 
 1. Initiating device on LAN (`dev1` )
 2. Target device on LAN (`dev2` )
 
+* Device to "force" a port forwarding
 * Running a test web server on port 80
 
 3. Remote server
 
-#### Initial outbound TCP
+* A server hosted on the internet that we control
+* To control and act as the entry point for the port forwarding configurations
 
-initial outbound TCP from dev1: (dev2\_addr:80) -> (remote\_addr:8888)
+{% stepper %}
+{% step %}
+### Initial outbound TCP
+
+Initial outbound TCP from dev1: (dev2\_addr:80) -> (remote\_addr:8888)
 
 * This should create a NAT entry on the router:
   * src\_ip + port: dev2\_addr:80
   * dest\_ip + port: remote\_addr:8888)
 * The NAT will change the source IP + port to its own public address and a random port number
+{% endstep %}
 
-#### Remote server receive the TCP connection
+{% step %}
+### Remote server receives the TCP connection
 
 The remote server will not have any listeners on port 8888, but instead run a `tcpdump` to identify the source IP + port of the TCP connection. The source value will be used as the destination IP + port to send a fresh HTTP request, with destinaton being (remote\_addr:8888).
 
 This request is expected to be accepted, and routed by the NAT to  (dev2\_addr:80).
+{% endstep %}
+{% endstepper %}
+
+
 
