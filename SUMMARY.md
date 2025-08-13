@@ -86,7 +86,9 @@
 * [20/21/tcp \~ ftp](network-ports-and-services-cheat-sheet/20-21-tcp-ftp.md)
 * [22/tcp \~ ssh](network-ports-and-services-cheat-sheet/22-tcp-ssh.md)
 * [23/tcp \~ telnet](network-ports-and-services-cheat-sheet/23-tcp-telnet.md)
-* [...](network-ports-and-services-cheat-sheet/....md)
+* [53/udp \~ dns](network-ports-and-services-cheat-sheet/53-udp-dns.md)
+* [80/443/tcp \~ http(s)](network-ports-and-services-cheat-sheet/....md)
+* [...](network-ports-and-services-cheat-sheet/...-1.md)
 
 ## For-fun projects
 
