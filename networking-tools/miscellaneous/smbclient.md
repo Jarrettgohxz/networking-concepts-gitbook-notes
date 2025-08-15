@@ -22,6 +22,8 @@ Connect to admin (`ADMIN$`) share on the host with IP address 10.10.x.x
 $ smbclient //10.10.x.x/ADMIN$ -U [username] 
 ```
 
+> Note: we can supply the password with the username using the `--user` command: `--user=jarrett%password` . However, this may not be the ideal method for security reasons, since the password will be provided in plaintext.&#x20;
+
 ### Executing commands
 
 ```sh
