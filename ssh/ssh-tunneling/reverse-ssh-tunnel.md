@@ -13,14 +13,35 @@ description: >-
 Reverse tunneling is enabled with the `-R` flag, with the supplied values: `[remote_address:]remote_port:local_address:local_port`
 
 ```bash
-$ ssh -R [remote_address]:<remote_port>:<local_address>:<local_port>
+$ ssh ... -R [remote_address]:<remote_port>:<local_address>:<local_port>
 
 # Example: bind remote port 8888 on all addresses on the remote side (0.0.0.0) to the localhost (127.0.0.1) port 6666
-$ ssh -R 0.0.0.0:8888:127.0.0.1:6666
-$ ssh -R 8888:127.0.0.1:6666 # notice that the <remote_port> can be omitted (default to 0.0.0.0)
+$ ssh ... -R 0.0.0.0:8888:127.0.0.1:6666
+$ ssh ... -R 8888:127.0.0.1:6666 # notice that the <remote_port> can be omitted (default to 0.0.0.0)
 ```
 
-**Use case**
+### Special use case
+
+```sh
+ssh ... -R <listen_port> 
+```
+
+* Providing a single port value to the `-R` option allows the initiating client to act as a proxy for any connections that arrives from the SSH tunnel
+* any traffic sent to the localhost address at the supplied `<listen_port>` on the remote server (which received the SSH connection) will be proxied through the client
+
+```sh
+# eg. from pivot server
+$ ssh user@pivot -R 9999 -N
+
+# from server running SSH server
+$ lsof -i -P -n | grep 9999
+... ... xxxx:9999
+
+$ curl -x socks5://localhost:9999 ifconfig.me
+...address of the pivot server will be returned
+```
+
+### Example
 
 The SSH reverse tunnel can be utilized to expose a locally running service to the internet (without the need to manually setup port forwarding on the gateway).&#x20;
 
