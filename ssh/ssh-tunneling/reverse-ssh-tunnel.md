@@ -30,15 +30,15 @@ ssh ... -R <listen_port>
 * any traffic sent to the localhost address at the supplied `<listen_port>` on the remote server (which received the SSH connection) will be proxied through the client
 
 ```sh
-# eg. from pivot server
-$ ssh user@pivot -R 9999 -N
+# eg. from client server (initiating the request)
+$ ssh user@remote -R 9999 -N
 
-# from server running SSH server
+# from server running SSH 
 $ lsof -i -P -n | grep 9999
 ... ... xxxx:9999
 
 $ curl -x socks5://localhost:9999 ifconfig.me
-...address of the pivot server will be returned
+...address of the client server will be returned
 ```
 
 ### Example
