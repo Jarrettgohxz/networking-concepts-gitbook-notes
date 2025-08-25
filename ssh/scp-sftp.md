@@ -1,2 +1,3 @@
-# scp/sftp
+# scp
 
+SFTP over SSH ...

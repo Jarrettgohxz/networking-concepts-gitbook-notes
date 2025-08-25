@@ -18,7 +18,7 @@
 * [SSH public key authentication](ssh/ssh-public-key-authentication.md)
 * [Port forwarding with virtual interface](ssh/port-forwarding-with-virtual-interface.md)
 * [sshd](ssh/sshd.md)
-* [scp/sftp](ssh/scp-sftp.md)
+* [scp](ssh/scp-sftp.md)
 
 ## 🔫 Networking tools
 
