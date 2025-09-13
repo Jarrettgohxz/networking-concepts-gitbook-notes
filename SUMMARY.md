@@ -88,6 +88,7 @@
 * [23/tcp \~ telnet](network-ports-and-services-cheat-sheet/23-tcp-telnet.md)
 * [53/udp \~ dns](network-ports-and-services-cheat-sheet/53-udp-dns.md)
 * [80/443/tcp \~ http(s)](network-ports-and-services-cheat-sheet/....md)
+* [3389/tcp \~ rdp](network-ports-and-services-cheat-sheet/3389-tcp-rdp.md)
 * [...](network-ports-and-services-cheat-sheet/...-1.md)
 
 ## For-fun projects
