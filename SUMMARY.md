@@ -33,6 +33,7 @@
   * [lsof](networking-tools/configuration-and-information/lsof.md)
   * [pgrep](networking-tools/configuration-and-information/pgrep.md)
   * [nmcli](networking-tools/configuration-and-information/nmcli.md)
+  * [dhclient](networking-tools/configuration-and-information/dhclient.md)
   * [Information about services/processes & PID](networking-tools/configuration-and-information/information-about-services-processes-and-pid.md)
 * [monitoring & troubleshooting](networking-tools/monitoring-and-troubleshooting/README.md)
   * [ping](networking-tools/monitoring-and-troubleshooting/ping.md)
