@@ -82,6 +82,7 @@
 * [Network hole punching](interesting-concepts/network-hole-punching.md)
 * [SSH Over HTTPS](interesting-concepts/ssh-over-https.md)
 * [TUN & TAP interfaces](interesting-concepts/tun-and-tap-interfaces.md)
+* [Network bridge](interesting-concepts/network-bridge.md)
 
 ## Network ports & services cheat sheet
 
