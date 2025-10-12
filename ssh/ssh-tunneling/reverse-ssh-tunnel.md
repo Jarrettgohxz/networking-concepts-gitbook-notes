@@ -49,6 +49,20 @@ $ curl -x socks5://localhost:9999 ifconfig.me
 ...address of the client server will be returned
 ```
 
+#### Alternative method to try
+
+> The following has not been tested
+
+{% code title="client -> server" overflow="wrap" %}
+```sh
+$ ssh -v -D 1080 -R 127.0.0.1:8888:localhost:1080 user@1.1.1.1 -N
+```
+{% endcode %}
+
+* TCP request to port 8888 on server -> port 1080 on client -> ??
+
+...&#x20;
+
 ### Example
 
 The SSH reverse tunnel can be utilized to expose a locally running service to the internet (without the need to manually setup port forwarding on the gateway).&#x20;
