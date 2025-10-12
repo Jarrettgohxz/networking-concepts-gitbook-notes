@@ -12,5 +12,4 @@
 | Routing/Switching | Routes based on IP addresses   | Switches based on MAC addresses                                                                                                 |
 | Packet type       | IP packets only                | Ethernet frames (can carry IP, ARP, etc.)                                                                                       |
 | Common usage      | VPN tunnels                    | <p>To act as a L2 switch: connect virtual machines, bridging, etc.<br>- Supports L2 features such as broadcasting ARP, etc.</p> |
-|                   |                                |                                                                                                                                 |
 
