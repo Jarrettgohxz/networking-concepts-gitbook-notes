@@ -53,7 +53,11 @@ $ sudo ip link set dev <iface> nomaster
 
 Suppose we want to create a network bridge (on a host OS) to bridge 2 host-only networks (from both VirtualBox and VMware). The method above of simply making the bridge interface the master of the 2 host-only interfaces will not work, since the host-only interfaces are fundamentally isolated, and the layer 2 packets (which the network bridge depends upon) will not leave the respective host-only interfaces.
 
+#### Reading references
+
 {% embed url="https://superuser.com/a/700383" %}
+
+{% embed url="https://superuser.com/questions/272962/virtualbox-vpn-networking-test-environment" %}
 
 
 
