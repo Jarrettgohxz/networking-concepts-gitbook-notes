@@ -20,7 +20,15 @@ $ ssh ... -R 0.0.0.0:8888:127.0.0.1:6666
 $ ssh ... -R 8888:127.0.0.1:6666 # notice that the <remote_port> can be omitted (default to 0.0.0.0)
 ```
 
-### Special use case
+### Special use case (reverse dynamic port forwarding)
+
+{% embed url="https://www.openssh.com/txt/release-7.6" %}
+Under "New Features" -> "add support for reverse dynamic port forwarding ..."
+{% endembed %}
+
+{% embed url="https://unix.stackexchange.com/a/409535" %}
+
+> According to the release notes, it is implemented in OpenSSH 7.6
 
 ```sh
 ssh ... -R <listen_port> 
