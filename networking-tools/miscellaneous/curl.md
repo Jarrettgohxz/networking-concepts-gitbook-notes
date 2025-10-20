@@ -27,7 +27,7 @@ $ curl ... -vvv
 
 ### Examples
 
-#### Sending a GET request to `https://domain.com`with query data
+#### Sending a GET request to `https://domain.com` with query data
 
 ```bash
 $ curl https://domain.com?key=value
@@ -63,6 +63,9 @@ Eg. Sending a POST request to `https://domain.com` with some **json** data.&#x20
 $ curl https://domain.com -H ... -d '{"key1":"value1","key2":"value2"}'
 # OR
 $ curl https://domain.com -H ... --data '{"key1":"value1","key2":"value2"}'
+
+# from file
+$ curl https://domain.com -H ... -d @file.json
 ```
 
 #### Form-data
