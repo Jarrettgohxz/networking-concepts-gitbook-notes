@@ -6,6 +6,7 @@
 
 * [Introduction](dns/introduction.md)
 * [DNS query](dns/dns-query.md)
+* [Reverse DNS](dns/reverse-dns.md)
 
 ## SSH
 
